@@ -1,0 +1,37 @@
+.app-content {
+  margin-left: 27%;
+  margin-top: 5%;
+  font-family: 'Roboto Slab', serif;
+  font-size: 36px;
+}
+
+.visior-actions {
+  padding-left: 29%;
+  //font-size: 18px !important;
+}
+
+//TODO : Remove these two class styles
+.visior-entry {
+  background-image: linear-gradient(180deg,#ff9257,#ff7226);
+  border: 1px solid #ff7226;
+  width: 150px;
+  height: 55px;
+  display: inline-block;
+  line-height: 3;
+  color: #fff;
+  font-size: 18px;
+  align-self: center;
+  //font-weight: 600;
+}
+
+.visitor-logout {
+  background-image: linear-gradient(180deg,#66e966,#16d916);
+  border: 1px solid #13da13;
+  width: 150px;
+  height: 55px;
+  display: inline-block;
+  line-height: 3;
+  color: #fff;
+  font-size: 18px;
+  align-self: center;
+}

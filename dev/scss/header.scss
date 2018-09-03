@@ -1,11 +1,14 @@
 .nav-warpper {
   font-family: 'Roboto Slab', serif;
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: 700px 100px 100px;
-  grid-template-rows: 50px;
+  // display: grid;
+  // grid-gap: 10px;
+  // grid-template-columns: 700px 100px 100px;
+  // grid-template-rows: 50px;
   background-color: #fff;
   color: #444;
+  width: 100%;
+  margin-top: 2% !important;
+  margin-bottom: 5% !important;
 
   border-bottom: 1px solid #eaeaea;
 
@@ -25,10 +28,10 @@
   }
 
   .app-login:hover {
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    background-color: green;
+    // padding-left: 10px;
+    // padding-right: 10px;
+    // padding-top: 5px;
+    // padding-bottom: 5px;
+    // background-color: green;
   }
 }
