@@ -8,10 +8,10 @@ export default class Home extends Component {
 
   render() {
     return (
-      <Grid>
+      <div id="container" style={{'margin-top': '0 !important'}}>
         <Header/>
         <ContentLayout/>
-      </Grid>
+      </div>
     );
   }
 }
