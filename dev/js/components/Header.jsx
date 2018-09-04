@@ -8,8 +8,8 @@ export default class Header extends Component {
   render() {
     return (
       <Grid columns='equal' className="nav-warpper">
-        <Grid.Column width={10} style={{'padding-top': '0'}}>
-          <p className="app-title">Care.</p>
+        <Grid.Column width={10} style={{'padding-top': '5px'}}>
+          <p className="app-title">WellCare.</p>
         </Grid.Column>
 
         <Grid.Column width={2} className="app-help-wrapper">
