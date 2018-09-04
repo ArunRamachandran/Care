@@ -10,7 +10,7 @@ class ContentLayout extends Component {
     return (
       <div className="app-content">
         {/*<p>Welcome to WellCare Australia ..</p>*/}
-        <p>Welcome to </p> <p className="content-highlight">WellCare</p> <p>Australia ..</p>
+        <p>Welcome to </p> <p className="content-highlight">WellCare</p> <p>A******* ..</p>
         <div className="visior-actions">
           <Button content='Visitor Entry' icon='group' labelPosition='left' 
             onClick={this.props.renderVisiotrForm}/>

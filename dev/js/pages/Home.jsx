@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import ErrorBoundary from './ErrorBoundary.jsx';
 import Header from '../components/Header.jsx';
 import ContentLayout from '../components/ContentLayout.jsx';
+import VisitorForm from '../components/VisitorForm.jsx';
 import { Grid } from 'semantic-ui-react';
 
 export default class Home extends Component {
