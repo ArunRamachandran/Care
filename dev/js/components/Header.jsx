@@ -1,25 +1,27 @@
 import React, {Component} from 'react';
 
 import '../../scss/header.scss';
-import { Grid, Segment } from 'semantic-ui-react';
+import { Grid, Button } from 'semantic-ui-react';
 
 export default class Header extends Component {
 
   render() {
     return (
-      <div className="nav-warpper">
-        <div className="app-title">
-          <span> Care.</span>
-        </div>
+      <Grid columns='equal' className="nav-warpper">
+        <Grid.Column width={10} style={{'padding-top': '5px'}}>
+          <p className="app-title">WellCare.</p>
+        </Grid.Column>
 
-        <div className="app-help">
-          <p> Need help ?</p>
-        </div>
+        <Grid.Column width={2} className="app-help-wrapper">
+          {/*<p className="app-help">Need help ?</p>*/}
+           <Button icon='help' label={{ as: 'a', basic: true, content: 'Need help ?' }} labelPosition='right' />
+        </Grid.Column>
 
-        <div className="app-login">
-          <p> Login </p>
-        </div>
-      </div>
+        <Grid.Column width={2} className="app-login-wrapper">
+          {/*<p className="app-login">Login</p>*/}
+          <Button icon='lock' label={{ as: 'a', basic: true, content: 'Login' }} labelPosition='left' />
+        </Grid.Column>
+      </Grid>
     );
   }
 }

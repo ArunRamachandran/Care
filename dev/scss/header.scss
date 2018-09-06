@@ -1,15 +1,19 @@
-body {
+body {  
+  background-color: #f9f9f9;
   margin: 0;
 }
 
 .nav-warpper {
-  font-family: 'Roboto Slab', serif;
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: 700px 100px 100px;
-  grid-template-rows: 50px;
+  margin-top: 0 !important;
+  font-family: 'Source Sans Pro',Helvetica,sans-serif;
+  //font-family: 'Roboto Slab', serif;
+  // display: grid;
+  // grid-gap: 10px;
+  // grid-template-columns: 700px 100px 100px;
+  // grid-template-rows: 50px;
   background-color: #fff;
   color: #444;
+  margin-bottom: 5% !important;
 
   border-bottom: 1px solid #eaeaea;
 
@@ -20,19 +24,25 @@ body {
     padding-left: 20%;
   }
 
+  .app-help-wrapper {
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+  }
+
   .app-help {
+    cursor: pointer;
+    text-align: right;
+  }
+
+  .app-login-wrapper {
+    width: 100px !important;
+  }
+
+  .app-login-wrapper:hover {
     cursor: pointer;
   }
 
   .app-login {
-    cursor: pointer;
-  }
-
-  .app-login:hover {
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    background-color: green;
+    
   }
 }
