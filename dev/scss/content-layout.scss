@@ -1,7 +1,8 @@
 .app-content {
   margin-top: 15%;
-  font-family: Source Sans Pro,Helvetica,sans-serif;
-  font-weight: 600;
+  //font-family: Source Sans Pro,Helvetica,sans-serif;
+  font-family: 'Roboto Slab', serif;
+  //font-weight: 600;
   font-size: 36px;
   text-align: center;
 
@@ -12,11 +13,25 @@
   .content-highlight {
     border-bottom: 2px solid #ffbb35;
   }
+
+  .content-highlight:hover {
+    border-bottom: 5px solid #ffbb35;
+    font-weight: bold;
+  }
+}
+
+.transition {
+    margin-top: 5% !important;
+    transition: 2s;
+
+    Button {
+      visibility: hidden;
+    }
 }
 
 .visior-actions {
   text-align: center;
-  
+
   Button {
     height: 60px;
     width: 180px;

@@ -3,8 +3,8 @@ body {
 }
 .nav-warpper {
   margin-top: 0 !important;
-  font-family: 'Source Sans Pro',Helvetica,sans-serif;
-  //font-family: 'Roboto Slab', serif;
+  //font-family: 'Source Sans Pro',Helvetica,sans-serif;
+  font-family: 'Roboto Slab', serif;
   // display: grid;
   // grid-gap: 10px;
   // grid-template-columns: 700px 100px 100px;
@@ -14,6 +14,7 @@ body {
   margin-bottom: 5% !important;
 
   border-bottom: 1px solid #eaeaea;
+  box-shadow: 0 0 8px 0 rgba(0,0,0,.3);
 
   .app-title {
     margin: 0 !important;
@@ -34,6 +35,7 @@ body {
 
   .app-login-wrapper {
     width: 100px !important;
+    margin-left: -45px;
   }
 
   .app-login-wrapper:hover {
@@ -41,6 +43,6 @@ body {
   }
 
   .app-login {
-    
+
   }
 }

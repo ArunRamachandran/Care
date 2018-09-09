@@ -12,7 +12,7 @@ export default class Header extends Component {
           <p className="app-title">WellCare.</p>
         </Grid.Column>
 
-        <Grid.Column width={2} className="app-help-wrapper">
+        <Grid.Column width={3} className="app-help-wrapper">
           {/*<p className="app-help">Need help ?</p>*/}
            <Button icon='help' label={{ as: 'a', basic: true, content: 'Need help ?' }} labelPosition='right' />
         </Grid.Column>
