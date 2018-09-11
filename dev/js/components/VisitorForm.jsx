@@ -108,7 +108,7 @@ export default class VisitorForm extends Component {
           </Grid.Row>
 
           <Grid.Row>
-            <CustomButton label='Submit' />
+            <CustomButton label='Submit' className='form-submit-btn'/>
           </Grid.Row>
 
         </Grid>

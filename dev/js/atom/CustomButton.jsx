@@ -4,11 +4,7 @@ import { Button } from 'semantic-ui-react';
 
 const CustomButton = (props) => (
   <div>
-    <Button>
-      <Button color='green'>
-        Submit
-      </Button>
-    </Button>
+    <Button positive className={props.className}>{props.label}</Button>
   </div>
 );
 

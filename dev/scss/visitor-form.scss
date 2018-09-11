@@ -34,4 +34,15 @@
     .reason-field-border {
         border-color: #85B7D9 !important;
     }
+
+    .form-submit-btn {
+      visibility: visible !important;
+      position: absolute;
+      margin-left: 43%;
+      padding-left: 42px;
+      padding-right: 42px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      font-size: 18px;
+    }
 }
