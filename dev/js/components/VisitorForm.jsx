@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
 
-import { Input, Grid, Dropdown, Select } from 'semantic-ui-react';
+import { Input, Grid, Dropdown, Select, TextArea } from 'semantic-ui-react';
 import CustomInput from '../atom/customInput.jsx';
+import CustomTextArea from '../atom/customTextArea.jsx';
+import CustomButton from '../atom/CustomButton.jsx';
+
 import '../../scss/visitor-form.scss';
 
 export default class VisitorForm extends Component {
@@ -27,13 +30,16 @@ export default class VisitorForm extends Component {
           <Grid.Row>
 
             <Grid.Column width={9}>
-              <CustomInput label='Full Name' className='first-name-field'
+              <CustomInput label='Full Name'
+                icon='users' iconPosition='left'
+                className='first-name-field'
                 type='text'
                 options={selectFieldOptions}
                 isSelectEnabled={true}
                 placeholder='Full name'
                 customPlaceHolder={null}
                 isDisabled={false}
+                isExtraMargin={false}
                 action={false}
                 defaultValue='Mr.'/>
             </Grid.Column>
@@ -42,8 +48,9 @@ export default class VisitorForm extends Component {
                 labelPosition='left'
                 type='text'
                 value='10/09/2018'
-                customPlaceHolder='Date  :   '
+                customPlaceHolder='Date '
                 isDisabled={true}
+                isExtraMargin={true}
                 action={false}
                 isSelectEnabled={false} />
             </Grid.Column>
@@ -59,6 +66,7 @@ export default class VisitorForm extends Component {
                 placeholder='Licence / ID number'
                 customPlaceHolder={null}
                 isDisabled={false}
+                isExtraMargin={false}
                 action={false}/>
             </Grid.Column>
             <Grid.Column width={5}>
@@ -66,13 +74,43 @@ export default class VisitorForm extends Component {
                 labelPosition='left'
                 type='text'
                 value='10:15:55 pm'
-                customPlaceHolder='Time IN : '
+                customPlaceHolder='Time IN  '
+                isExtraMargin={false}
                 isDisabled={true}
                 action={false}
                 isSelectEnabled={false} />
             </Grid.Column>
 
           </Grid.Row>
+
+          <Grid.Row>
+            <Grid.Column width={9}>
+              <CustomInput label='Car Rego ( If applicable )' className='car-rego-field'
+                labelPosition='left'
+                type='text'
+                placeholder='Car Rego ( If applicable )'
+                customPlaceHolder={null}
+                isExtraMargin={false}
+                isDisabled={false}
+                action={false}
+                isSelectEnabled={false} />
+            </Grid.Column>
+          </Grid.Row>
+
+          <Grid.Row>
+            <Grid.Column width={9}>
+              <CustomTextArea
+                placeholder='Reason for visit'
+                customPlaceHolder='Reason for visit'
+                className='reason-for-visit-field'
+                additionalStylingClass='reason-field-border'/>
+            </Grid.Column>
+          </Grid.Row>
+
+          <Grid.Row>
+            <CustomButton label='Submit' />
+          </Grid.Row>
+
         </Grid>
       )
     }

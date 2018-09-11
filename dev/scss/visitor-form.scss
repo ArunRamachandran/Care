@@ -6,11 +6,32 @@
       width: 65%;
     }
 
-    .date-field {
-         border-color: #e41919;
+    .disabled-field{
+         border-color: #228B22 !important;
     }
 
     .unique-id-field {
       width: 65%;
+    }
+
+    .car-rego-field {
+      width: 65%;
+    }
+
+    .extra-margin-left {
+      margin-left: 21px;
+    }
+
+    .reason-for-visit-field {
+      float: right;
+      width: 83%;
+
+      span {
+        margin-left: -76%;
+      }
+    }
+
+    .reason-field-border {
+        border-color: #85B7D9 !important;
     }
 }
