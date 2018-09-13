@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Select, Input, Icon } from 'semantic-ui-react'
+import { Select, Input, Icon, Dropdown } from 'semantic-ui-react'
 
 const CustomInput = (props) => (
     <div>
@@ -14,10 +14,7 @@ const CustomInput = (props) => (
         placeholder={props.placeholder}
         focus
         action={props.action} iconPosition='left'>
-          { props.isSelectEnabled &&
-              <Select compact options={props.options}
-                defaultValue={props.defaultValue}/>
-          }
+          { props.isSelectEnabled && <Select compact options={props.options} defaultValue={props.defaultValue}/> }
           <input
             value={props.value}
             className={props.isDisabled ? 'disabled-field' : ''}

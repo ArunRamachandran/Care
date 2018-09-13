@@ -9,3 +9,5 @@ var VisitorActions = {
     })
   }
 }
+
+module.exports = VisitorActions;
