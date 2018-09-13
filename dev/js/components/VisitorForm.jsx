@@ -5,6 +5,8 @@ import CustomInput from '../atom/customInput.jsx';
 import CustomTextArea from '../atom/customTextArea.jsx';
 import CustomButton from '../atom/CustomButton.jsx';
 
+import VisitorActions from '../actions/VisitorActions';
+
 import '../../scss/visitor-form.scss';
 
 export default class VisitorForm extends Component {
@@ -13,6 +15,11 @@ export default class VisitorForm extends Component {
         this.state = {
 
         }
+    }
+
+    updateVisitorName = (event) => {
+      console.log('name : ', event.target.value);
+      VisitorActions.updateVisitorName(event.target.value);
     }
 
     render() {
@@ -36,6 +43,7 @@ export default class VisitorForm extends Component {
                 type='text'
                 options={selectFieldOptions}
                 isSelectEnabled={true}
+                updateVisitorName={this.updateVisitorName}
                 placeholder='Full name'
                 customPlaceHolder={null}
                 isDisabled={false}
