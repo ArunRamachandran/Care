@@ -43,6 +43,12 @@ var VisitorActions = {
       actionType: ActionTypes.UPDATE_VIST_REASON,
       data: value
     })
+  },
+
+  verifyAndSubmitUserData: function () {
+    AppDispatcher.handleAction({
+      actionType: ActionTypes.VERIFY_AND_SUBMIT
+    })
   }
 }
 

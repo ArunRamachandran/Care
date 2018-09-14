@@ -7,7 +7,7 @@ const CustomTextArea = (props) => (
         {props.customPlaceHolder && <span> {props.customPlaceHolder} </span>}
         <TextArea
           placeholder={props.placeholder}
-          className={props.additionalStylingClass}
+          className={`${props.additionalStylingClass} ${props.enableWarning ? 'warning' : ''}`}
           onBlur={props.handleOnBlur}
         />
       </Form>

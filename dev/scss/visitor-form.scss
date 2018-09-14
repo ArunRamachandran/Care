@@ -35,10 +35,14 @@
         border-color: #85B7D9 !important;
     }
 
+    .warning {
+      border-color: red !important;
+    }
+
     .form-submit-btn {
       visibility: visible !important;
-      position: absolute;
-      margin-left: 43%;
+      position: absolute !important;
+      margin-left: 43% !important;
       padding-left: 42px;
       padding-right: 42px;
       padding-top: 20px;

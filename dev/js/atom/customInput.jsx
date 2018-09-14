@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Select, Input, Icon, Dropdown } from 'semantic-ui-react'
+import { Select, Input, Icon, Dropdown, Label } from 'semantic-ui-react'
 
 const CustomInput = (props) => (
     <div>
@@ -9,8 +9,7 @@ const CustomInput = (props) => (
         type={props.type}
         disabled={props.isDisabled}
         className={ `${props.className} ${props.isExtraMargin ? 'extra-margin-left' : ''}`}
-        label={{basic: true, content: 'date'}}
-        labelPosition={props.labelPosition}
+        label={{ icon: 'asterisk' }} labelPosition='left corner'
         placeholder={props.placeholder}
         focus
         action={props.action} iconPosition='left'>
@@ -22,8 +21,9 @@ const CustomInput = (props) => (
           }
           <input
             value={props.value}
-            className={props.isDisabled ? 'disabled-field' : ''}
+            className={`${props.isDisabled ? 'disabled-field' : ''} ${props.enableWarning ? 'warning' : ''}`}
             onBlur={props.handleOnBlur}/>
+
       </Input>
     </div>
 );

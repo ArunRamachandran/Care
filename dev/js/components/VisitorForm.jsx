@@ -5,6 +5,7 @@ import CustomInput from '../atom/customInput.jsx';
 import CustomTextArea from '../atom/customTextArea.jsx';
 import CustomButton from '../atom/CustomButton.jsx';
 
+import AppConstants from '../constants/AppConstants';
 import VisitorActions from '../actions/VisitorActions';
 import AppStore from '../stores/AppStore';
 
@@ -22,8 +23,14 @@ export default class VisitorForm extends Component {
       super(props);
       this.state = {
         date: null,
-        time: null
+        time: null,
+        invalidFields: [],
+        isValidating: false // to control loading icon on button
       }
+    }
+
+    componentWillMount = () => {
+      AppStore.addChangeListener(AppConstants.ERROR, this.handleError);
     }
 
     componentDidMount = () => {
@@ -36,6 +43,22 @@ export default class VisitorForm extends Component {
       });
 
       VisitorActions.updateDateAndTime(currentDate, currentTime);
+    }
+
+    componentWillUnmount = () => {
+      AppStore.removeListener(AppConstants.ERROR, this.handleError);
+    }
+
+    handleError = (response) => {
+      let invalidFields = [];
+      response.forEach((field, i) => {
+        invalidFields.push( Object.keys(field)[0] );
+      })
+      this.setState({
+        invalidFields: invalidFields,
+        isValidating: false // Remove loader from button
+      });
+      console.log('There is an error : ', invalidFields);
     }
 
     handleOnSelect = (event) => {
@@ -57,6 +80,20 @@ export default class VisitorForm extends Component {
 
     updateReasonForVisit = (event) => {
       VisitorActions.updateReasonForVisit(event.target.value);
+    }
+
+    handleSubmission = () => {
+      this.setState({
+        isValidating: true
+      })
+      VisitorActions.verifyAndSubmitUserData();
+    }
+
+    validateFieldEntry = (fieldName) => {
+      let invalidFields = this.state.invalidFields;
+      if (invalidFields.indexOf(fieldName) > -1 ) {// if the given field name is mandatory & visitor doesn't provide any vali  input
+        return true;
+      } else return false;
     }
 
     render() {
@@ -83,6 +120,7 @@ export default class VisitorForm extends Component {
 
                 handleOnBlur={this.updateVisitorName}
                 handleOnSelect={this.handleOnSelect}
+                enableWarning={this.validateFieldEntry('fullName')}
 
                 placeholder='Full name'
                 customPlaceHolder={null}
@@ -114,6 +152,7 @@ export default class VisitorForm extends Component {
                 placeholder='Licence / ID number'
 
                 handleOnBlur={this.handleUniqueIdUpdate}
+                enableWarning={this.validateFieldEntry('uniqueID')}
 
                 customPlaceHolder={null}
                 isDisabled={false}
@@ -158,12 +197,17 @@ export default class VisitorForm extends Component {
                 customPlaceHolder='Reason for visit'
                 className='reason-for-visit-field'
                 additionalStylingClass='reason-field-border'
+                enableWarning={this.validateFieldEntry('reasonForVisit')}
                 handleOnBlur={this.updateReasonForVisit}/>
             </Grid.Column>
           </Grid.Row>
 
           <Grid.Row>
-            <CustomButton label='Submit' className='form-submit-btn'/>
+            <CustomButton
+              label='Submit'
+              className='form-submit-btn'
+              onClick={this.handleSubmission}
+              loaderEnabled={this.state.isValidating}/>
           </Grid.Row>
 
         </Grid>
