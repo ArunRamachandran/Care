@@ -8,6 +8,7 @@ const CustomTextArea = (props) => (
         <TextArea
           placeholder={props.placeholder}
           className={props.additionalStylingClass}
+          onBlur={props.handleOnBlur}
         />
       </Form>
     </div>

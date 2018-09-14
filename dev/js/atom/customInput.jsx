@@ -14,11 +14,16 @@ const CustomInput = (props) => (
         placeholder={props.placeholder}
         focus
         action={props.action} iconPosition='left'>
-          { props.isSelectEnabled && <Select compact options={props.options} defaultValue={props.defaultValue}/> }
+          { props.isSelectEnabled &&
+              <Select compact
+                onChange={props.handleOnSelect}
+                options={props.options}
+                defaultValue={props.defaultValue}/>
+          }
           <input
             value={props.value}
             className={props.isDisabled ? 'disabled-field' : ''}
-            onBlur={props.updateVisitorName}/>
+            onBlur={props.handleOnBlur}/>
       </Input>
     </div>
 );
