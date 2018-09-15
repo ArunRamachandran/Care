@@ -84,8 +84,9 @@ export default class VisitorForm extends Component {
 
     handleSubmission = () => {
       this.setState({
-        isValidating: true
+        isValidating: true // Enable loader on button
       })
+
       VisitorActions.verifyAndSubmitUserData();
     }
 
@@ -94,6 +95,14 @@ export default class VisitorForm extends Component {
       if (invalidFields.indexOf(fieldName) > -1 ) {// if the given field name is mandatory & visitor doesn't provide any vali  input
         return true;
       } else return false;
+    }
+
+    createErrorMessageFragment = () => {
+      return (
+        <div className='form-field-error-msg'>
+          *Following fields are mandatory & can not be leave as empty
+        </div>
+      )
     }
 
     render() {
@@ -107,110 +116,117 @@ export default class VisitorForm extends Component {
       ]
 
       return (
-        <Grid columns='equal' className='form-field-container'>
-          <Grid.Row>
+        <div>
+          <Grid columns='equal' className='form-field-container'>
+            <Grid.Row>
+              {this.state.invalidFields.length ? this.createErrorMessageFragment() : null}
+            </Grid.Row>
 
-            <Grid.Column width={9}>
-              <CustomInput label='Full Name'
-                icon='users' iconPosition='left'
-                className='first-name-field'
-                type='text'
-                options={selectFieldOptions}
-                isSelectEnabled={true}
+            <Grid.Row>
 
-                handleOnBlur={this.updateVisitorName}
-                handleOnSelect={this.handleOnSelect}
-                enableWarning={this.validateFieldEntry('fullName')}
+              <Grid.Column width={9}>
+                <CustomInput label='Full Name'
+                  icon='users' iconPosition='left'
+                  className='first-name-field'
+                  type='text'
+                  options={selectFieldOptions}
+                  isSelectEnabled={true}
 
-                placeholder='Full name'
-                customPlaceHolder={null}
-                isDisabled={false}
-                isExtraMargin={false}
-                action={false}
-                defaultValue='Mr.'/>
-            </Grid.Column>
-            <Grid.Column width={5}>
-              <CustomInput label='Date' className='date-field'
-                labelPosition='left'
-                type='text'
-                value={this.state.date}
-                customPlaceHolder='Date '
-                isDisabled={true}
-                isExtraMargin={true}
-                action={false}
-                isSelectEnabled={false} />
-            </Grid.Column>
+                  handleOnBlur={this.updateVisitorName}
+                  handleOnSelect={this.handleOnSelect}
+                  enableWarning={this.validateFieldEntry('fullName')}
 
-          </Grid.Row>
+                  placeholder='Full name'
+                  customPlaceHolder={null}
+                  isDisabled={false}
+                  isExtraMargin={false}
+                  action={false}
+                  defaultValue='Mr.'/>
+              </Grid.Column>
+              <Grid.Column width={5}>
+                <CustomInput label='Date' className='date-field'
+                  labelPosition='left'
+                  type='text'
+                  value={this.state.date}
+                  customPlaceHolder='Date '
+                  isDisabled={true}
+                  isExtraMargin={true}
+                  action={false}
+                  isSelectEnabled={false} />
+              </Grid.Column>
 
-          <Grid.Row>
+            </Grid.Row>
 
-            <Grid.Column width={9}>
-              <CustomInput label='Licence / ID number' className='unique-id-field'
-                type='text'
-                isSelectEnabled={false}
-                placeholder='Licence / ID number'
+            <Grid.Row>
 
-                handleOnBlur={this.handleUniqueIdUpdate}
-                enableWarning={this.validateFieldEntry('uniqueID')}
+              <Grid.Column width={9}>
+                <CustomInput label='Licence / ID number' className='unique-id-field'
+                  type='text'
+                  isSelectEnabled={false}
+                  placeholder='Licence / ID number'
 
-                customPlaceHolder={null}
-                isDisabled={false}
-                isExtraMargin={false}
-                action={false}/>
-            </Grid.Column>
-            <Grid.Column width={5}>
-              <CustomInput label='Time IN' className='time-in-field'
-                labelPosition='left'
-                type='text'
-                value={this.state.time}
-                customPlaceHolder='Time IN  '
-                isExtraMargin={false}
-                isDisabled={true}
-                action={false}
-                isSelectEnabled={false} />
-            </Grid.Column>
+                  handleOnBlur={this.handleUniqueIdUpdate}
+                  enableWarning={this.validateFieldEntry('uniqueID')}
 
-          </Grid.Row>
+                  customPlaceHolder={null}
+                  isDisabled={false}
+                  isExtraMargin={false}
+                  action={false}/>
+              </Grid.Column>
+              <Grid.Column width={5}>
+                <CustomInput label='Time IN' className='time-in-field'
+                  labelPosition='left'
+                  type='text'
+                  value={this.state.time}
+                  customPlaceHolder='Time IN  '
+                  isExtraMargin={false}
+                  isDisabled={true}
+                  action={false}
+                  isSelectEnabled={false} />
+              </Grid.Column>
 
-          <Grid.Row>
-            <Grid.Column width={9}>
-              <CustomInput label='Car Rego ( If applicable )' className='car-rego-field'
-                labelPosition='left'
-                type='text'
-                placeholder='Car Rego ( If applicable )'
+            </Grid.Row>
 
-                handleOnBlur={this.updateCustomerCarRego}
+            <Grid.Row>
+              <Grid.Column width={9}>
+                <CustomInput label='Car Rego ( If applicable )' className='car-rego-field'
+                  labelPosition='left'
+                  type='text'
+                  placeholder='Car Rego ( If applicable )'
 
-                customPlaceHolder={null}
-                isExtraMargin={false}
-                isDisabled={false}
-                action={false}
-                isSelectEnabled={false} />
-            </Grid.Column>
-          </Grid.Row>
+                  handleOnBlur={this.updateCustomerCarRego}
 
-          <Grid.Row>
-            <Grid.Column width={9}>
-              <CustomTextArea
-                placeholder='Reason for visit'
-                customPlaceHolder='Reason for visit'
-                className='reason-for-visit-field'
-                additionalStylingClass='reason-field-border'
-                enableWarning={this.validateFieldEntry('reasonForVisit')}
-                handleOnBlur={this.updateReasonForVisit}/>
-            </Grid.Column>
-          </Grid.Row>
+                  customPlaceHolder={null}
+                  isExtraMargin={false}
+                  isDisabled={false}
+                  action={false}
+                  isSelectEnabled={false} />
+              </Grid.Column>
+            </Grid.Row>
 
-          <Grid.Row>
-            <CustomButton
-              label='Submit'
-              className='form-submit-btn'
-              onClick={this.handleSubmission}
-              loaderEnabled={this.state.isValidating}/>
-          </Grid.Row>
+            <Grid.Row>
+              <Grid.Column width={9}>
+                <CustomTextArea
+                  placeholder='Reason for visit'
+                  customPlaceHolder='Reason for visit'
+                  className='reason-for-visit-field'
+                  additionalStylingClass='reason-field-border'
+                  enableWarning={this.validateFieldEntry('reasonForVisit')}
+                  handleOnBlur={this.updateReasonForVisit}/>
+              </Grid.Column>
+            </Grid.Row>
 
-        </Grid>
+            <Grid.Row>
+              <CustomButton
+                label='Submit'
+                className='form-submit-btn'
+                onClick={this.handleSubmission}
+                loaderEnabled={this.state.isValidating}/>
+            </Grid.Row>
+
+          </Grid>
+
+        </div>
       )
     }
 }

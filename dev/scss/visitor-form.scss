@@ -36,7 +36,12 @@
     }
 
     .warning {
-      border-color: red !important;
+      border-color:  #ff0033 !important;
+    }
+
+    .form-field-error-msg {
+      padding-left: 30%;
+      color:  #ff0033;
     }
 
     .form-submit-btn {
