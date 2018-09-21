@@ -31,6 +31,7 @@ export default class VisitorForm extends Component {
 
     componentWillMount = () => {
       AppStore.addChangeListener(AppConstants.ERROR, this.handleError);
+      AppStore.addChangeListener(AppConstants.SUCCESS, this.handleQuerySubmission);
     }
 
     componentDidMount = () => {
@@ -47,6 +48,13 @@ export default class VisitorForm extends Component {
 
     componentWillUnmount = () => {
       AppStore.removeListener(AppConstants.ERROR, this.handleError);
+      AppStore.removeChangeListener(AppConstants.SUCCESS, this.handleQuerySubmission);
+    }
+
+    async handleQuerySubmission (visitorData) {
+      console.log("proceed with query : ", visitorData);
+      const response = await fetch('/api/test');
+      console.log('API worked :) : ', response);
     }
 
     handleError = (response) => {

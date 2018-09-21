@@ -48,6 +48,9 @@ var AppStore = objectAssign({}, EventEmitter.prototype, {
   emitErrorEvent: function(invalidFields) {
     this.emit(AppConstants.ERROR, invalidFields);
   },
+  emitSuccessEvent: function(data) {
+    this.emit(AppConstants.SUCCESS, data); 
+  },
   addChangeListener: function (eventName, callback) {
     this.on(eventName, callback);
   },
@@ -98,9 +101,12 @@ AppDispatcher.register(function(payload) {
     case AppConstants.VERIFY_AND_SUBMIT:
       let inputValidation = _validateVisitorData();
       console.log('validation : ', inputValidation);
-      if (inputValidation.length) {
+      if (inputValidation.length) { // If visitor didn't fill all the mandatory fields requried to process
         AppStore.emitErrorEvent(inputValidation);
-      } else AppStore.emitSuccessEvent();
+      } else {
+        let data = AppStore.getDetails();
+        AppStore.emitSuccessEvent(data);
+      }
       break;
 
     default:
