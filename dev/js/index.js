@@ -1,3 +1,5 @@
+import babel from "babel-core/register";
+import babelPolyfil from "babel-polyfill";
 import React from 'react';
 import {render} from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
