@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import '../../scss/content-layout.scss';
 import VisitorForm from './VisitorForm.jsx';
+import TimeOutForm from './TimeOutForm.jsx';
 import { Grid, Segment, Button } from 'semantic-ui-react';
 
 import data from '../static/data';
@@ -34,34 +35,40 @@ class ContentLayout extends Component {
   }
 
   createLayoutTitle = (state) => {
-
+    let title;
     console.log("data['isFormEnabled'] : ", data['isFormEnabled'])
     switch (state) {
 
-      case state.isFormEnabled:
-        return (
-          <p>{data['isFormEnabled']}</p>
-        );
+      case state.isFormEnabled === true:
+        return (<p>{data['isFormEnabled']}</p>);
         break;
 
-      case state.isLogoutEnabled:
-        return (
-          <p>{data['isLogoutEnabled']}</p>
-        );
+      case state.isLogoutEnabled === true:
+        return (<p>{data['isLogoutEnabled']}</p>);
         break;
 
       default:
-        return (
+        title =
           <div>
             <p>Welcome to </p> <p className="content-highlight">WellCare</p> <p>Australia ..</p>
           </div>
-        )
-    }
+    };
+
+    return title;
+  }
+
+  /** @def : redirect is a temporary function to redirect back to home page */
+  /** TODO : Implement router to handle redirection */
+  redirect = () => {
+    this.setState({
+      isFormEnabled: false,
+      customCls: false
+    })
   }
 
   createContentLayout = (state) => {
-    if (state.isFormEnabled) return <VisitorForm/>;
-    else if (state.isLogoutEnabled) return null;
+    if (state.isFormEnabled) return <VisitorForm redirect={this.redirect}/>;
+    else if (state.isLogoutEnabled) return <TimeOutForm/>;
   }
 
   render() {

@@ -7,13 +7,13 @@ var CHANGE_EVENT = 'change';
 
 var _store = {
   visitorData: [
-    {title: 'Mr.', isRequired: true},
-    {fullName: '', isRequired: true},
-    {date: '', isRequired: true},
-    {time: '', isRequired: true},
-    {uniqueID: '', isRequired: true},
+    {title: 'Mr.', isRequired: false},
+    {fullName: '', isRequired: false},
+    {date: '', isRequired: false},
+    {time: '', isRequired: false},
+    {uniqueID: '', isRequired: false},
     {carRego: '', isRequired: false},
-    {reasonForVisit: '', isRequired: true}
+    {reasonForVisit: '', isRequired: false}
   ]
 };
 
@@ -49,7 +49,7 @@ var AppStore = objectAssign({}, EventEmitter.prototype, {
     this.emit(AppConstants.ERROR, invalidFields);
   },
   emitSuccessEvent: function(data) {
-    this.emit(AppConstants.SUCCESS, data); 
+    this.emit(AppConstants.SUCCESS, data);
   },
   addChangeListener: function (eventName, callback) {
     this.on(eventName, callback);

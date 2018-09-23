@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 
 import { Input, Grid, Dropdown, Select, TextArea } from 'semantic-ui-react';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+const CustomSwal = withReactContent(Swal);
+
 import CustomInput from '../atom/customInput.jsx';
 import CustomTextArea from '../atom/customTextArea.jsx';
 import CustomButton from '../atom/CustomButton.jsx';
@@ -31,7 +35,7 @@ export default class VisitorForm extends Component {
 
     componentWillMount = () => {
       AppStore.addChangeListener(AppConstants.ERROR, this.handleError);
-      AppStore.addChangeListener(AppConstants.SUCCESS, this.handleQuerySubmission);
+      AppStore.addChangeListener(AppConstants.SUCCESS, this.handleQueryAndRedirection);
     }
 
     componentDidMount = () => {
@@ -48,13 +52,33 @@ export default class VisitorForm extends Component {
 
     componentWillUnmount = () => {
       AppStore.removeListener(AppConstants.ERROR, this.handleError);
-      AppStore.removeChangeListener(AppConstants.SUCCESS, this.handleQuerySubmission);
+      AppStore.removeChangeListener(AppConstants.SUCCESS, this.handleQueryAndRedirection);
+    }
+
+    handleQueryAndRedirection = () => {
+      this.handleQuerySubmission();
+      console.log("props : ", this.props);
+      setTimeout( () => {
+        this.props.redirect();
+      }, 2200);
+       // redirect back to home page on successfull form submission
     }
 
     async handleQuerySubmission (visitorData) {
-      console.log("proceed with query : ", visitorData);
-      const response = await fetch('/api/test');
-      console.log('API worked :) : ', response);
+      const api = await fetch(`${AppConstants.API}/api/test`);
+      const response = await api.json();
+
+      if (response.status)  {
+        CustomSwal.fire({
+          type: 'success',
+          title: 'Your data has been saved',
+          showConfirmButton: false,
+          timer: 2100
+        })
+
+      } else {
+        console.log('query failed');
+      }
     }
 
     handleError = (response) => {
@@ -122,6 +146,8 @@ export default class VisitorForm extends Component {
         { key: 'Ms.', text: 'Ms.', value: 'Ms.' },
         { key: 'Dr.', text: 'Dr.', value: 'Dr.' }
       ]
+
+      console.log("this.props : ", this.props);
 
       return (
         <div>

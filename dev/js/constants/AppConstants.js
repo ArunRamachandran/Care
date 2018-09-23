@@ -7,5 +7,6 @@ module.exports = {
   UPDATE_VIST_REASON: 'UPDATE_VIST_REASON',
   VERIFY_AND_SUBMIT: 'VERIFY_AND_SUBMIT',
   ERROR: 'ERROR',
-  SUCCESS: 'SUCCESS'
+  SUCCESS: 'SUCCESS',
+  API: 'http://localhost:5000'
 }
