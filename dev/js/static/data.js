@@ -1,6 +1,6 @@
-const data = {
+export const data = {
   'isFormEnabled': 'Visitor entry form',
   'isLogoutEnabled': 'Add visitor time out'
 }
 
-export default data;
+export const timeOutContent = 'Please provide your Licence / ID number to fetch your entry details';

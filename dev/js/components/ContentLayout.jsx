@@ -6,7 +6,7 @@ import VisitorForm from './VisitorForm.jsx';
 import TimeOutForm from './TimeOutForm.jsx';
 import { Grid, Segment, Button } from 'semantic-ui-react';
 
-import data from '../static/data';
+import {data} from '../static/data';
 
 class ContentLayout extends Component {
 

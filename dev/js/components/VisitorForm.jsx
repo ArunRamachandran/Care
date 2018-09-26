@@ -147,8 +147,6 @@ export default class VisitorForm extends Component {
         { key: 'Dr.', text: 'Dr.', value: 'Dr.' }
       ]
 
-      console.log("this.props : ", this.props);
-
       return (
         <div>
           <Grid columns='equal' className='form-field-container'>
