@@ -26,6 +26,10 @@ body {
   .app-help-wrapper {
     padding-right: 0 !important;
     margin-right: 0 !important;
+    
+    button {
+      height: 45px;;
+    }
   }
 
   .app-help {
@@ -36,6 +40,10 @@ body {
   .app-login-wrapper {
     width: 100px !important;
     margin-left: -45px;
+
+    button {
+      height: 45px;;
+    }
   }
 
   .app-login-wrapper:hover {

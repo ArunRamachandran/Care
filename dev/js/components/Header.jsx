@@ -13,13 +13,14 @@ export default class Header extends Component {
         </Grid.Column>
 
         <Grid.Column width={3} className="app-help-wrapper">
-          {/*<p className="app-help">Need help ?</p>*/}
-           <Button icon='help' label={{ as: 'a', basic: true, content: 'Need help ?' }} labelPosition='right' />
+          <Button className="ui orange basic button">Need help ?</Button>
         </Grid.Column>
 
         <Grid.Column width={2} className="app-login-wrapper">
-          {/*<p className="app-login">Login</p>*/}
-          <Button icon='lock' label={{ as: 'a', basic: true, content: 'Login' }} labelPosition='left' />
+          <Button className="ui linkedin button">
+            <i className="lock icon"></i>
+            Login
+          </Button>
         </Grid.Column>
       </Grid>
     );
