@@ -6,7 +6,7 @@ import CustomTextArea from '../atom/customTextArea.jsx';
 import CustomButton from '../atom/CustomButton.jsx';
 import MessageContainer from '../atom/MessageContainer.jsx';
 import Loader from '../atom/Loader.jsx';
-import {timeOutContent} from '../static/data';
+import {timeOutContent, loadingPanelContent} from '../static/data';
 
 import AppConstants from '../constants/AppConstants';
 import VisitorActions from '../actions/VisitorActions';
@@ -34,6 +34,13 @@ export default class TimeOutForm extends Component {
     this.setState({
       enableLoader: true
     })
+  }
+
+  renderVisitorDetails = () => {
+    return (
+      <div>
+      </div>
+    )
   }
 
   render () {
@@ -73,7 +80,16 @@ export default class TimeOutForm extends Component {
           </Grid.Row>
 
           <Grid.Row>
-            {this.state.enableLoader && <Loader/>}
+            {/*this.state.enableLoader ?
+              <LoadingPanel content={loadingPanelContent}/>
+              : this.renderVisitorDetails()
+            */}
+            <Grid.Column width={2}>
+              <Loader/>
+            </Grid.Column>
+            <Grid.Column width={9} className="loading-panel-content">
+              <p>{loadingPanelContent}</p>
+            </Grid.Column>
           </Grid.Row>
         </Grid>
       </div>
