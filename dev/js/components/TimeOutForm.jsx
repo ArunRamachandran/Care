@@ -36,9 +36,18 @@ export default class TimeOutForm extends Component {
     })
   }
 
-  renderVisitorDetails = () => {
+  createLoader = () => {
+    return (
+      <Grid.Column width={2} className="search-loading-panel">
+        <Loader/>
+      </Grid.Column>
+    )
+  }
+
+  renderSearchResult = () => {
     return (
       <div>
+        Keep an eye on this space to see the visitor data
       </div>
     )
   }
@@ -48,12 +57,12 @@ export default class TimeOutForm extends Component {
       <div className="timeout-field-container">
         <Grid columns='equal'>
           <Grid.Row>
-            <Grid.Column width={9}>
+            <Grid.Column width={14}>
               <MessageContainer content={timeOutContent}/>
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
-            <Grid.Column width={5}>
+            <Grid.Column width={5} className="search-field-panel">
               <CustomInput label='Licence / ID number' className='unique-id-field'
                   type='text'
                   isSelectEnabled={false}
@@ -80,16 +89,7 @@ export default class TimeOutForm extends Component {
           </Grid.Row>
 
           <Grid.Row>
-            {/*this.state.enableLoader ?
-              <LoadingPanel content={loadingPanelContent}/>
-              : this.renderVisitorDetails()
-            */}
-            <Grid.Column width={2}>
-              <Loader/>
-            </Grid.Column>
-            <Grid.Column width={9} className="loading-panel-content">
-              <p>{loadingPanelContent}</p>
-            </Grid.Column>
+            {this.state.enableLoader ? this.createLoader () : this.renderSearchResult()}
           </Grid.Row>
         </Grid>
       </div>
