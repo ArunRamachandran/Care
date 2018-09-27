@@ -46,9 +46,12 @@ export default class TimeOutForm extends Component {
 
   renderSearchResult = () => {
     return (
-      <div>
-        Keep an eye on this space to see the visitor data
-      </div>
+      <Grid.Column width={9} className="search-result-panel">
+        <div className="ui cards">
+          <div className="card">
+          </div>          
+        </div>
+      </Grid.Column>
     )
   }
 
