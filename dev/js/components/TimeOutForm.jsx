@@ -19,8 +19,14 @@ export default class TimeOutForm extends Component {
     super(props);
     this.state = {
       visitorID: '',
-      enableLoader: false
+      enableLoader: true
     }
+  }
+
+  componentDidMount = () => {
+    setTimeout(() => {
+      this.setState({ enableLoader: false })
+    }, 2500);
   }
 
   handleUniqueIdUpdate = (event) => {
@@ -59,9 +65,11 @@ export default class TimeOutForm extends Component {
               <td>
                 <CustomButton
                     label='Click here'
-                    className='form-submit-btn'
-                    onClick={this.handleSubmission}
+                    className='timeout-btn'
                     loaderEnabled={false}/>
+                <div className="ui pointing label" style={{'position': 'absolute'}}>
+                  Click on the button to capture your OUT time
+                </div>
               </td>
             </tr>
           </tbody>
