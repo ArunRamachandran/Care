@@ -79,7 +79,7 @@ class ContentLayout extends Component {
     return (
       <div className={`${this.state.wrapperCls} ${this.state.customCls}`}>
 
-        {title}
+        {/*title*/}
 
         <div className="visior-actions">
           <Button content='Visitor Entry' icon='group' labelPosition='left'

@@ -47,10 +47,25 @@ export default class TimeOutForm extends Component {
   renderSearchResult = () => {
     return (
       <Grid.Column width={9} className="search-result-panel">
-        <div className="ui cards">
-          <div className="card">
-          </div>          
-        </div>
+        <table className="ui green table ">
+          <thead>
+            <tr><th>Name</th>
+            <th>Entry Time</th>
+            <th>Out Time</th>
+          </tr></thead><tbody>
+            <tr>
+              <td>Daniel Hems Well</td>
+              <td>9.10 am</td>
+              <td>
+                <CustomButton
+                    label='Click here'
+                    className='form-submit-btn'
+                    onClick={this.handleSubmission}
+                    loaderEnabled={false}/>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </Grid.Column>
     )
   }
