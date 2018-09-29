@@ -57,28 +57,60 @@ export default class VisitorForm extends Component {
 
     handleQueryAndRedirection = () => {
       this.handleQuerySubmission();
-      console.log("props : ", this.props);
-      setTimeout( () => {
-        this.props.redirect();
-      }, 2200);
-       // redirect back to home page on successfull form submission
     }
 
     async handleQuerySubmission (visitorData) {
-      const api = await fetch(`${AppConstants.API}/api/test`);
-      const response = await api.json();
-
-      if (response.status)  {
-        CustomSwal.fire({
-          type: 'success',
-          title: 'Your data has been saved',
-          showConfirmButton: false,
-          timer: 2100
+      const data = await fetch(`${AppConstants.API}/api/test`)
+        .then(response => response.json())
+        .then(json => {
+          CustomSwal.fire({
+            type: 'success',
+            title: 'Your data has been saved',
+            showConfirmButton: false,
+            timer: 2100
+          });
+          // redirect back to home page on successfull form submission
+          setTimeout( () => {
+            this.props.redirect();
+          }, 2200);
+        })
+        .catch (e => {
+          CustomSwal.fire({
+            type: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!',
+            footer: 'Click button to try again..',
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Try again'
+          }).then((result) => {
+            if (result.value) {
+              this.handleQuerySubmission();
+            }
+          })
         })
 
-      } else {
-        console.log('query failed');
-      }
+
+
+      // if (!error) {
+      //   const response = await api.json();
+      //
+      //   if (response.status)  {
+      //     CustomSwal.fire({
+      //       type: 'success',
+      //       title: 'Your data has been saved',
+      //       showConfirmButton: false,
+      //       timer: 2100
+      //     })
+      //
+      //   } else {
+      //     console.log('query failed');
+      //   }
+      //
+      // } else {
+      //   alert('API did not work');
+      // }
+
     }
 
     handleError = (response) => {

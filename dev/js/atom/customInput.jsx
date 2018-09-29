@@ -22,7 +22,8 @@ const CustomInput = (props) => (
           <input
             value={props.value}
             className={`${props.isDisabled ? 'disabled-field' : ''} ${props.enableWarning ? 'warning' : ''}`}
-            onBlur={props.handleOnBlur}/>
+            onBlur={props.handleOnBlur}
+            onChange={props.handleOnChange}/>
 
       </Input>
     </div>

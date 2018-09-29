@@ -28,8 +28,8 @@
   }
 
   .search-result-panel {
-    margin-left: 13%;
-    margin-top: 4%;
+    margin-left: 4%;
+    margin-top: 3%;
   }
 
   .timeout-btn {
@@ -37,6 +37,12 @@
     padding-top: 15px;
     padding-left: 25px;
     padding-right: 25px;
-    background-color: #00b5ad;
+    background-color: '#00b5ad';
+  }
+
+  .search-field-error {
+    p {
+      color: #fff !important;
+    }
   }
 }
