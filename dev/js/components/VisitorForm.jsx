@@ -86,6 +86,10 @@ export default class VisitorForm extends Component {
           }).then((result) => {
             if (result.value) {
               this.handleQuerySubmission();
+            } else if (result.dismiss === 'overlay') {
+              this.setState({
+                isValidating: false
+              });
             }
           })
         })

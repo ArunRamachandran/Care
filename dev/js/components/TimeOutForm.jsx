@@ -87,6 +87,10 @@ export default class TimeOutForm extends Component {
               console.log('result : SWAL : ', result);
               if (result.value) {
                 this.findVisitor();
+              } else if (result.dismiss === 'cancel') { // If user opted to cancel the popup then,
+                this.setState({
+                  enableLoader: false
+                });
               }
             })
         })
@@ -111,9 +115,8 @@ export default class TimeOutForm extends Component {
             type: 'success',
             title: 'Thank you',
             html:
-              'You can use <b>bold text</b>, ' +
-              '<a href="//github.com">links</a> ' +
-              'and other HTML tags',
+              'Thank you for your visit !' +
+              '<p><b>Would you like to provide your feedback about us ?</b></p> ',
             showCloseButton: true,
             showCancelButton: true,
             focusConfirm: false,
@@ -123,16 +126,14 @@ export default class TimeOutForm extends Component {
               '<i className="fa fa-thumbs-down"></i> Need to improve',
             cancelButtonAriaLabel: 'Thumbs down',
           }).then((result) => {
-            console.log('result : SWAL : ', result);
             if (result.value) {
-              this.updateOUTTime();
+              this.handleCustomerFeedback();
             }
           })
 
       })
       .catch(e => {
           // If api failed to fetch the data then,
-          console.log('API error : e : ', e);
           CustomSwal.fire({
             type: 'error',
             title: 'Oops...',
@@ -147,6 +148,37 @@ export default class TimeOutForm extends Component {
               this.findVisitor();
             }
           })
+      })
+  }
+
+  handleCustomerFeedback = () => {
+    this.updateCustomerFeedback(); // Write an API herte to store the active customers feedback
+    this.props.redirect();
+  }
+
+  async updateCustomerFeedback () {
+    const data = await fetch(`${AppConstants.API}/api/test/feedback`)
+      .then(response => response.json())
+      .then(json => {
+          // Update the api result to state to display it to user
+          CustomSwal.fire({
+            type: 'success',
+            title: 'All done!',
+            timer: 2000,
+            onOpen: () => {
+              CustomSwal.showLoading()
+              this.timerInterval = setInterval(() => {
+                CustomSwal.getContent().querySelector('strong')
+                  .textContent = swal.getTimerLeft()
+              }, 100)
+            },
+            onClose: () => {
+              clearInterval(this.timerInterval)
+            }
+          })
+      })
+      .then(() => {
+        this.props.redirect();
       })
   }
 

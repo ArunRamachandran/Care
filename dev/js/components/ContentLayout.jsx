@@ -62,13 +62,14 @@ class ContentLayout extends Component {
   redirect = () => {
     this.setState({
       isFormEnabled: false,
+      isLogoutEnabled: false,
       customCls: false
     })
   }
 
   createContentLayout = (state) => {
     if (state.isFormEnabled) return <VisitorForm redirect={this.redirect}/>;
-    else if (state.isLogoutEnabled) return <TimeOutForm/>;
+    else if (state.isLogoutEnabled) return <TimeOutForm redirect={this.redirect}/>;
   }
 
   render() {

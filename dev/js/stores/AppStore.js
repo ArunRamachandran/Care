@@ -7,11 +7,11 @@ var CHANGE_EVENT = 'change';
 
 var _store = {
   visitorData: [
-    {title: 'Mr.', isRequired: false},
-    {fullName: '', isRequired: false},
-    {date: '', isRequired: false},
-    {time: '', isRequired: false},
-    {uniqueID: '', isRequired: false},
+    {title: 'Mr.', isRequired: true},
+    {fullName: '', isRequired: true},
+    {date: '', isRequired: true},
+    {time: '', isRequired: true},
+    {uniqueID: '', isRequired: true},
     {carRego: '', isRequired: false},
     {reasonForVisit: '', isRequired: false}
   ]
