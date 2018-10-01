@@ -163,7 +163,7 @@ export default class TimeOutForm extends Component {
           // Update the api result to state to display it to user
           CustomSwal.fire({
             type: 'success',
-            title: 'All done!',
+            title: 'All done! Thank you.',
             timer: 2000,
             onOpen: () => {
               CustomSwal.showLoading()

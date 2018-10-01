@@ -17,7 +17,7 @@ export default class Header extends Component {
         </Grid.Column>
 
         <Grid.Column width={2} className="app-login-wrapper">
-          <Button className="ui linkedin button">
+          <Button className="ui linkedin button" onClick={this.props.handleLogin}>
             <i className="lock icon"></i>
             Login
           </Button>

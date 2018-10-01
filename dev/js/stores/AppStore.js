@@ -13,7 +13,7 @@ var _store = {
     {time: '', isRequired: true},
     {uniqueID: '', isRequired: true},
     {carRego: '', isRequired: false},
-    {reasonForVisit: '', isRequired: false}
+    {reasonForVisit: '', isRequired: true}
   ]
 };
 
