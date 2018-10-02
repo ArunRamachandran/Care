@@ -5,7 +5,6 @@ import Header from '../components/Header.jsx';
 import ContentLayout from '../components/ContentLayout.jsx';
 import VisitorForm from '../components/VisitorForm.jsx';
 import TimeOutForm from '../components/TimeOutForm.jsx';
-import LoginModal from './LoginModal.jsx';
 import { Grid } from 'semantic-ui-react';
 
 export default class Home extends Component {
@@ -13,8 +12,7 @@ export default class Home extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      renderForm: false,
-      isLoginModal: false
+      renderForm: false
     }
   }
 
@@ -25,9 +23,7 @@ export default class Home extends Component {
   }
 
   handleLogin = () => {
-    this.setState({
-      isLoginModal: true
-    })
+    console.log('Login');
   }
 
   render() {
@@ -41,7 +37,6 @@ export default class Home extends Component {
             : <ContentLayout
                 redirect={this.redirectToHomePage}/>
           }
-          { this.state.isLoginModal ? <LoginModal/> : null }
         </div>
       </ErrorBoundary>
     );

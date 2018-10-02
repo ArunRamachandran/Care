@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
 
 import '../../scss/header.scss';
 import { Grid, Button } from 'semantic-ui-react';
@@ -17,9 +18,12 @@ export default class Header extends Component {
         </Grid.Column>
 
         <Grid.Column width={2} className="app-login-wrapper">
-          <Button className="ui linkedin button" onClick={this.props.handleLogin}>
+          <Button className="ui linkedin button">
             <i className="lock icon"></i>
-            Login
+            <Link to='/login' className="login-link">
+              Login
+            </Link>
+
           </Button>
         </Grid.Column>
       </Grid>
