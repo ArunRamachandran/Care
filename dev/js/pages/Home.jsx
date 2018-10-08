@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 import ErrorBoundary from './ErrorBoundary.jsx';
 import Header from '../components/Header.jsx';
+import WellCare from './WellCare.jsx';
 import ContentLayout from '../components/ContentLayout.jsx';
 import VisitorForm from '../components/VisitorForm.jsx';
 import TimeOutForm from '../components/TimeOutForm.jsx';
@@ -31,12 +32,13 @@ export default class Home extends Component {
       <ErrorBoundary>
         <div id="container" style={{'marginTop': '0 !important'}}>
           <Header handleLogin={this.handleLogin}/>
-          {
+          <WellCare/>
+          {/*
             this.state.renderForm ?
               <VisitorForm/>
             : <ContentLayout
                 redirect={this.redirectToHomePage}/>
-          }
+          */}
         </div>
       </ErrorBoundary>
     );
