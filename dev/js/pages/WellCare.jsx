@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 
 import { Grid } from 'semantic-ui-react'
+import '../../scss/wellcare.scss';
 
 export default class WellCare extends Component {
 
   render () {
     return (
-      <Grid>
+      <Grid className="opt_container">
         <Grid.Row columns={3}>
           <Grid.Column>
             <div className="opt resident">
